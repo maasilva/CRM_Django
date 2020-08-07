@@ -10,7 +10,7 @@
 <form>
     <div class="form-group mb-1">
         <input class="form-control" type="text" name="name" placeholder="Buscar por nome...">
-    </div>    
+    </div>
     <button type="submit" class="btn btn-primary">Buscar</button>
 </form>
 
@@ -32,33 +32,7 @@
             <td>{{ customer.get_full_phone_number }}</td>
             <td>{{ customer.email }}</td>
             <form method="POST" action="{{ customer.get_delete_url }}">{% csrf_token %}
-                <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
-                        Excluir
-                    </button>
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Apagar</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    Deseja apagar o registro ?
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-dismiss="modal">Cancelar</button>
-                                    <button type="submit" class="btn btn-primary">Confirmar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </td>
+                <td><button type="submit" class="btn btn-danger">Excluir</button></td>
             </form>
         </tr>
         {% endfor %}
@@ -68,19 +42,19 @@
 
 <ul class="pagination">
     {% if page_obj.has_previous %}
-        <li class="page-item"><a class="page-link" href="?{{ page_obj.previous_page_number }}">Anterior</a></li>
+    <li class="page-item"><a class="page-link" href="?{{ page_obj.previous_page_number }}">Anterior</a></li>
     {% else %}
-        <li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
+    <li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
     {% endif %}
 
     {% for object in page_obj.paginator.page_range%}
-        <li class="page-item"><a class="page-link" href="?page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
+    <li class="page-item"><a class="page-link" href="?page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
     {% endfor %}
 
     {% if page_obj.has_next %}
-        <li class="page-item"><a class="page-link" href="?{{ page_obj.next_page_number }}">Próximo</a></li>
+    <li class="page-item"><a class="page-link" href="?{{ page_obj.next_page_number }}">Próximo</a></li>
     {% else %}
-        <li class="page-item disabled"><a class="page-link" href="#">Próximo</a></li>
+    <li class="page-item disabled"><a class="page-link" href="#">Próximo</a></li>
     {% endif %}
 
 </ul>
